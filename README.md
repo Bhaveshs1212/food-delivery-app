@@ -39,7 +39,7 @@
 
 ```mermaid
 graph TB
-    subgraph "Live Applications"
+    subgraph "Vercel Hosting"
         C[Customer App<br/>tomato.bhaveshs.me<br/>React + Vite]
         A[Admin Panel<br/>tomatoadmin.bhaveshs.me<br/>React + Vite]
     end
@@ -287,12 +287,12 @@ The application is deployed and accessible at the following URLs:
 
 #### 🛍️ Customer Application
 - **URL**: [tomato.bhaveshs.me](https://tomato.bhaveshs.me)
-- **Platform**: Web hosting
+- **Platform**: Vercel
 - **Features**: Browse menu, place orders, track deliveries
 
 #### 👨‍💼 Admin Panel
 - **URL**: [tomatoadmin.bhaveshs.me](https://tomatoadmin.bhaveshs.me)
-- **Platform**: Web hosting
+- **Platform**: Vercel
 - **Features**: Manage food items, process orders, view analytics
 
 #### 🔧 Backend API
@@ -334,6 +334,41 @@ cd admin && npm run build
 
 # Start production server
 cd server && npm start
+```
+
+### Vercel Deployment
+
+Both the client and admin applications are deployed on Vercel with custom domains:
+
+#### Prerequisites for Vercel Deployment
+- Vercel account
+- GitHub repository connected to Vercel
+- Custom domain configured (optional)
+
+#### Vercel Configuration Files
+Both applications include `vercel.json` configuration files with:
+- **Framework**: Vite detection
+- **Build Command**: `npm run build`
+- **Output Directory**: `dist`
+- **SPA Routing**: All routes redirect to `index.html` for client-side routing
+
+#### Deployment Steps
+1. **Connect Repository**: Link your GitHub repo to Vercel
+2. **Environment Variables**: Set up environment variables in Vercel dashboard
+3. **Custom Domain**: Configure custom domains (tomato.bhaveshs.me, tomatoadmin.bhaveshs.me)
+4. **Auto Deploy**: Push to main branch triggers automatic deployment
+
+#### Environment Variables in Vercel
+Set these in the Vercel dashboard for each project:
+
+**Client Project:**
+```
+VITE_SERVER_URL=https://your-backend-api-url.onrender.com
+```
+
+**Admin Project:**
+```
+VITE_SERVER_URL=https://your-backend-api-url.onrender.com
 ```
 
 ### Deployment Checklist
