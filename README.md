@@ -9,6 +9,15 @@
 
 > A full-stack food delivery application built with the MERN stack, featuring real-time order management, secure payment processing, and comprehensive admin controls.
 
+## 🌐 Live Demo
+
+🚀 **Deployed Applications:**
+- **Customer App**: [tomato.bhaveshs.me](https://tomato.bhaveshs.me) - Browse and order food
+- **Admin Panel**: [tomatoadmin.bhaveshs.me](https://tomatoadmin.bhaveshs.me) - Manage orders and menu
+- **Backend API**: Deployed on Render - Powers both applications
+
+> **Note**: The applications are fully functional with real payment processing via Stripe. Feel free to explore the demo!
+
 ## ✨ Features
 
 ### 🛍️ Customer Features
@@ -30,19 +39,19 @@
 
 ```mermaid
 graph TB
-    subgraph "Frontend Applications"
-        C[Client App<br/>React + Vite]
-        A[Admin Panel<br/>React + Vite]
+    subgraph "Live Applications"
+        C[Customer App<br/>tomato.bhaveshs.me<br/>React + Vite]
+        A[Admin Panel<br/>tomatoadmin.bhaveshs.me<br/>React + Vite]
     end
     
     subgraph "Backend Services"
-        S[Express Server<br/>Node.js]
-        DB[(MongoDB<br/>Database)]
+        S[Express Server<br/>Render<br/>Node.js]
+        DB[(MongoDB Atlas<br/>Cloud Database)]
         ST[Stripe<br/>Payment Gateway]
     end
     
     subgraph "External Services"
-        IMG[Image Storage<br/>Multer]
+        IMG[Image Storage<br/>Multer + File System]
     end
     
     C --> S
@@ -158,12 +167,29 @@ cp server/.env.example server/.env
 ```
 
 Configure your environment variables:
+
+#### Development Environment
 ```env
 JWT_SECRET=your_super_secret_jwt_key
-STRIPE_SECRET_KEY=sk_test_your_stripe_secret_key
+STRIPE_SECRET_KET=sk_test_your_stripe_test_key
 MONGODB_URI=mongodb://localhost:27017/food-delivery
+FRONTEND_URL=http://localhost:5173
 PORT=4000
 ```
+
+#### Client Environment (.env)
+```env
+VITE_SERVER_URL=http://localhost:4000
+```
+
+#### Admin Environment (.env)
+```env
+VITE_SERVER_URL=http://localhost:4000
+```
+
+> **Production Note**: For production deployment, update the URLs to match your deployed services:
+> - Frontend URLs: `https://tomato.bhaveshs.me` and `https://tomatoadmin.bhaveshs.me`
+> - Backend URL: Your Render deployment URL
 
 ### 3. Install Dependencies
 
@@ -255,14 +281,69 @@ npm run dev
 
 ## 🚀 Deployment
 
-### Production Build
+### Live Applications
+
+The application is deployed and accessible at the following URLs:
+
+#### 🛍️ Customer Application
+- **URL**: [tomato.bhaveshs.me](https://tomato.bhaveshs.me)
+- **Platform**: Web hosting
+- **Features**: Browse menu, place orders, track deliveries
+
+#### 👨‍💼 Admin Panel
+- **URL**: [tomatoadmin.bhaveshs.me](https://tomatoadmin.bhaveshs.me)
+- **Platform**: Web hosting
+- **Features**: Manage food items, process orders, view analytics
+
+#### 🔧 Backend API
+- **Platform**: Render
+- **Database**: MongoDB Atlas
+- **Environment**: Production
+- **Features**: RESTful API, secure authentication, payment processing
+
+### Environment Configuration
+
+For production deployment, ensure these environment variables are set:
+
+#### Server (.env)
+```env
+JWT_SECRET=your_production_jwt_secret
+STRIPE_SECRET_KET=sk_live_your_stripe_live_key
+MONGODB_URI=your_mongodb_atlas_connection_string
+FRONTEND_URL=https://tomato.bhaveshs.me
+PORT=4000
+```
+
+#### Client (.env)
+```env
+VITE_SERVER_URL=https://your-backend-api-url.onrender.com
+```
+
+#### Admin (.env)
+```env
+VITE_SERVER_URL=https://your-backend-api-url.onrender.com
+```
+
+### Production Build Commands
 ```bash
-# Client build
+# Build client application
 cd client && npm run build
 
-# Admin build
+# Build admin panel
 cd admin && npm run build
+
+# Start production server
+cd server && npm start
 ```
+
+### Deployment Checklist
+- ✅ Environment variables configured
+- ✅ Database connection established (MongoDB Atlas)
+- ✅ Payment gateway configured (Stripe)
+- ✅ File upload directory created
+- ✅ CORS configured for production domains
+- ✅ SSL certificates enabled (HTTPS)
+- ✅ Domain names configured and pointed to hosting
 
 ## � Acknowledgments
 
