@@ -264,24 +264,6 @@ cd client && npm run build
 cd admin && npm run build
 ```
 
-### Environment Configuration
-- Set `NODE_ENV=production`
-- Configure production MongoDB URI
-- Use production Stripe keys
-- Set secure JWT secret
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## � Acknowledgments
 
 - React team for the amazing library
